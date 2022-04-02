@@ -1,0 +1,41 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %}{% trans 'Add Year' %}{% endblock %}
+
+{% block page_title %}{% endblock %}
+
+{% block body_class %}addYear-form{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="sign-in-block">
+                    <h3>{% trans 'Add Year' %}</h3>
+
+                    {{ messagesPartial('partial::alerts', {}, null, 'user-login') }}
+
+                    {% set dummy = form.prepare() %}
+                    {{ form().openTag(form) | raw }}
+
+                    {% set year = form.get('year') %}
+                    {% set elementTranslatePlaceholder = year.getAttribute('placeholder')|trans|raw %}
+                    {% set dummy = year.setAttribute('placeholder', elementTranslatePlaceholder) %}
+                    {{ formElement(year) }}
+
+                    {% set status = form.get('status') %}
+                    {% set elementTranslatePlaceholder = status.getAttribute('placeholder')|trans|raw %}
+                    {% set dummy = status.setAttribute('placeholder', elementTranslatePlaceholder) %}
+                    {{ formElement(status) }}
+
+                    {% set submit = form.get('submit') %}
+                    {% set submitValue = submit.getValue|trans|raw %}
+                    {% set dummy = submit.setAttribute('value', submitValue) %}
+                    {{ formSubmit(submit) }}
+
+                    {{ form().closeTag() | raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

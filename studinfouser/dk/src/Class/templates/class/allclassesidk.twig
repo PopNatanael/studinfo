@@ -1,0 +1,26 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %}All Classes{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                <h1>Your Classes</h1>
+                    <ul>
+                        {% for classes in class %}
+                            <li>
+                                <b> Class Name: </b> {{ classes.name }}  <br> 
+                                <b> Class Status: </b> {{ classes.status }} <br> 
+                                <b> Year: </b> {{ classes.year.year }} <br> 
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+
+{% endblock %}
